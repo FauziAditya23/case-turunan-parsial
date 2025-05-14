@@ -45,5 +45,5 @@ try:
     ax.set_zlabel('z')
     st.pyplot(fig)
 
-except Execption as e:
+except Exception as e:
     st.error(f"Terjadi kesalahan: {e}")
