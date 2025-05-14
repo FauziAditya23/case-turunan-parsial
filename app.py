@@ -39,7 +39,7 @@ try:
     ax = fig.add_subplot(111, projection='3d')
     ax.plot_surface(X, Y, Z, alpha=0.7, cmap='viridis')
     ax.plot_surface(X, Y, Z_tangent, alpha=0.5, color='red')
-    ax.set.title("Permukaan f(x, y) dan bidang singgungnya")
+    ax.set_title("Permukaan f(x, y) dan bidang singgungnya")
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
