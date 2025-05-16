@@ -28,7 +28,6 @@ try:
     st.write("Skor produktivitas (f(x, y)):", float(f_val))
     st.write("Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
 
-    # Grafik 3D
     st.subheader("Grafik Produktivitas dan Bidang Singgung")
 
     x_vals = np.linspace(x0 - 3, x0 + 3, 60)
@@ -53,11 +52,10 @@ try:
     ax.set_ylabel("Frekuensi Buka Aplikasi", labelpad=10)
     ax.set_zlabel("Skor Produktivitas", labelpad=10)
 
-    ax.view_init(elev=30, azim=45)  # sudut pandang kamera
+    ax.view_init(elev=30, azim=45)  
     ax.grid(True)
     ax.set_title("Visualisasi Produktivitas dan Turunan Parsial", pad=15)
 
-    # Tambahkan manual legend (karena 3D plot_surface tidak mendukung label langsung)
     from matplotlib.lines import Line2D
     legend_elements = [
         Line2D([0], [0], marker='o', color='w', label='Titik Evaluasi', markerfacecolor='black', markersize=8),
