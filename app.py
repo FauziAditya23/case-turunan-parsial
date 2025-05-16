@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
-st.title("Produktivitas Gen Z vs Penggunaan Media Sosial")
+st.title("📱 Produktivitas Gen Z vs Penggunaan Media Sosial")
 
 x, y = sp.symbols('x y')
 fungsi_str = "-0.4*x**2 - 0.2*y**2 + 0.5*x*y + 5"
@@ -25,10 +25,15 @@ try:
     fx_val = fx.subs({x: x0, y: y0})
     fy_val = fy.subs({x: x0, y: y0})
 
-    st.write("Skor produktivitas (f(x, y)):", float(f_val))
-    st.write("Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
+    st.write("📈 Skor produktivitas (f(x, y)):", float(f_val))
+    st.write("🧮 Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
 
-    st.subheader("Grafik Produktivitas dan Bidang Singgung")
+    st.latex(r"\text{Evaluasi Turunan Parsial pada Titik:}")
+    st.latex(r"\frac{\partial f}{\partial x}(" + str(x0) + "," + str(y0) + r") = " + str(round(float(fx_val), 2)))
+    st.latex(r"\frac{\partial f}{\partial y}(" + str(x0) + "," + str(y0) + r") = " + str(round(float(fy_val), 2)))
+
+    # Grafik 3D
+    st.subheader("🌀 Grafik Produktivitas dan Bidang Singgung")
 
     x_vals = np.linspace(x0 - 3, x0 + 3, 60)
     y_vals = np.linspace(y0 - 15, y0 + 15, 60)
@@ -42,7 +47,7 @@ try:
     ax = fig.add_subplot(111, projection='3d')
 
     # Permukaan fungsi
-    surface = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8, label='Fungsi Produktivitas')
+    surface = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
     # Bidang singgung
     tangent = ax.plot_surface(X, Y, Z_tangent, color='tomato', alpha=0.5)
 
@@ -52,14 +57,15 @@ try:
     ax.set_ylabel("Frekuensi Buka Aplikasi", labelpad=10)
     ax.set_zlabel("Skor Produktivitas", labelpad=10)
 
-    ax.view_init(elev=30, azim=45)  
+    ax.view_init(elev=30, azim=45) 
     ax.grid(True)
     ax.set_title("Visualisasi Produktivitas dan Turunan Parsial", pad=15)
+
 
     from matplotlib.lines import Line2D
     legend_elements = [
         Line2D([0], [0], marker='o', color='w', label='Titik Evaluasi', markerfacecolor='black', markersize=8),
-        Line2D([0], [0], color='mediumvioletred', lw=4, label='Bidang Singgung'),
+        Line2D([0], [0], color='tomato', lw=4, label='Bidang Singgung'),
         Line2D([0], [0], color='mediumseagreen', lw=4, label='Permukaan Produktivitas')
     ]
     ax.legend(handles=legend_elements, loc='upper right')
