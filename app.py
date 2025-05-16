@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
-st.title("Produktivitas Gen Z vs Penggunaan Media Sosial")
+st.title("Pengaruh Durasi dan Frekuensi Penggunaan Media Sosial terhadap Produktivitas Gen Z")
 
 x, y = sp.symbols('x y')
 fungsi_str = "-0.4*x**2 - 0.2*y**2 + 0.5*x*y + 5"
