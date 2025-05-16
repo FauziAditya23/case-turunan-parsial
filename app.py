@@ -2,12 +2,10 @@ import streamlit as st
 import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 st.set_page_config(layout="centered")
-st.markdown(
-    "<h1 style='text-align: center;'>Pengaruh Durasi dan Frekuensi Penggunaan Media Sosial terhadap Produktivitas Gen Z</h1>",
-    unsafe_allow_html=True
-)
+st.title("Pengaruh Durasi dan Frekuensi Penggunaan Media Sosial terhadap Produktivitas Gen Z")
 
 x, y = sp.symbols('x y')
 fungsi_str = "-0.4*x**2 - 0.2*y**2 + 0.5*x*y + 5"
@@ -17,19 +15,28 @@ try:
     fx = sp.diff(f, x)
     fy = sp.diff(f, y)
 
+    # Tampilkan persamaan fungsi dan turunannya
     st.latex(r"f(x, y) = -0.4x^2 - 0.2y^2 + 0.5xy + 5")
     st.latex(r"\frac{\partial f}{\partial x} = " + sp.latex(fx))
     st.latex(r"\frac{\partial f}{\partial y} = " + sp.latex(fy))
 
+    # Input slider
     x0 = st.slider("Durasi media sosial (jam/hari)", 0.0, 12.0, 4.0)
     y0 = st.slider("Frekuensi buka aplikasi (/hari)", 0.0, 50.0, 20.0)
 
+    # Hitung nilai fungsi dan gradien di titik (x0, y0)
     f_val = f.subs({x: x0, y: y0})
     fx_val = fx.subs({x: x0, y: y0})
     fy_val = fy.subs({x: x0, y: y0})
 
+    # Tampilkan nilai fungsi dan gradien
     st.write("Skor produktivitas (f(x, y)):", float(f_val))
     st.write("Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
+
+    # Tampilkan evaluasi turunan parsial pada titik (x0, y0)
+    st.markdown("### Evaluasi Turunan Parsial pada Titik:")
+    st.latex(r"\frac{\partial f}{\partial x}(" + f"{x0:.1f}, {y0:.1f}" + r") = " + f"{float(fx_val):.2f}")
+    st.latex(r"\frac{\partial f}{\partial y}(" + f"{x0:.1f}, {y0:.1f}" + r") = " + f"{float(fy_val):.2f}")
 
     # Grafik 3D
     st.subheader("Grafik Produktivitas dan Bidang Singgung")
@@ -46,7 +53,7 @@ try:
     ax = fig.add_subplot(111, projection='3d')
 
     # Permukaan fungsi
-    surface = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8, label='Fungsi Produktivitas')
+    surface = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
     # Bidang singgung
     tangent = ax.plot_surface(X, Y, Z_tangent, color='tomato', alpha=0.5)
 
@@ -60,10 +67,9 @@ try:
     ax.grid(True)
     ax.set_title("Visualisasi Produktivitas dan Turunan Parsial", pad=15)
 
-    from matplotlib.lines import Line2D
     legend_elements = [
         Line2D([0], [0], marker='o', color='w', label='Titik Evaluasi', markerfacecolor='black', markersize=8),
-        Line2D([0], [0], color='mediumvioletred', lw=4, label='Bidang Singgung'),
+        Line2D([0], [0], color='tomato', lw=4, label='Bidang Singgung'),
         Line2D([0], [0], color='mediumseagreen', lw=4, label='Permukaan Produktivitas')
     ]
     ax.legend(handles=legend_elements, loc='upper right')
