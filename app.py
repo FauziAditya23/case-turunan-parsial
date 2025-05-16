@@ -29,11 +29,10 @@ try:
     fx_val = fx.subs({x: x0, y: y0})
     fy_val = fy.subs({x: x0, y: y0})
 
-    # Tampilkan nilai fungsi dan gradien
+    # Tampilkan nilai fungsi
     st.write("Skor produktivitas (f(x, y)):", float(f_val))
-    st.write("Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
 
-    # Step-by-step turunan parsial ∂f/∂x
+    # Turunan parsial ∂f/∂x
     st.markdown("### Proses Evaluasi Turunan Parsial ∂f/∂x:")
     st.latex(r"\frac{\partial f}{\partial x} = " + sp.latex(fx))
     st.latex(
@@ -42,7 +41,7 @@ try:
     st.latex(f"= {(-0.8*x0):.2f} + {(0.5*y0):.2f}")
     st.latex(f"= {float(fx_val):.2f}")
 
-    # Step-by-step turunan parsial ∂f/∂y
+    # Turunan parsial ∂f/∂y
     st.markdown("### Proses Evaluasi Turunan Parsial ∂f/∂y:")
     st.latex(r"\frac{\partial f}{\partial y} = " + sp.latex(fy))
     st.latex(
@@ -50,6 +49,8 @@ try:
     )
     st.latex(f"= {(0.5*x0):.2f} - {(0.4*y0):.2f}")
     st.latex(f"= {float(fy_val):.2f}")
+    # Tampilkan nilai Gradien
+    st.write("Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
 
     # Grafik 3D
     st.subheader("Grafik Produktivitas dan Bidang Singgung")
