@@ -28,10 +28,6 @@ try:
     st.write("📈 Skor produktivitas (f(x, y)):", float(f_val))
     st.write("🧮 Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
 
-    st.latex(r"\text{Evaluasi Turunan Parsial pada Titik:}")
-    st.latex(r"\frac{\partial f}{\partial x}(" + str(x0) + "," + str(y0) + r") = " + str(round(float(fx_val), 2)))
-    st.latex(r"\frac{\partial f}{\partial y}(" + str(x0) + "," + str(y0) + r") = " + str(round(float(fy_val), 2)))
-
     # Grafik 3D
     st.subheader("🌀 Grafik Produktivitas dan Bidang Singgung")
 
@@ -47,7 +43,7 @@ try:
     ax = fig.add_subplot(111, projection='3d')
 
     # Permukaan fungsi
-    surface = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
+    surface = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8, label='Fungsi Produktivitas')
     # Bidang singgung
     tangent = ax.plot_surface(X, Y, Z_tangent, color='tomato', alpha=0.5)
 
@@ -57,15 +53,14 @@ try:
     ax.set_ylabel("Frekuensi Buka Aplikasi", labelpad=10)
     ax.set_zlabel("Skor Produktivitas", labelpad=10)
 
-    ax.view_init(elev=30, azim=45) 
+    ax.view_init(elev=30, azim=45)
     ax.grid(True)
     ax.set_title("Visualisasi Produktivitas dan Turunan Parsial", pad=15)
-
 
     from matplotlib.lines import Line2D
     legend_elements = [
         Line2D([0], [0], marker='o', color='w', label='Titik Evaluasi', markerfacecolor='black', markersize=8),
-        Line2D([0], [0], color='tomato', lw=4, label='Bidang Singgung'),
+        Line2D([0], [0], color='mediumvioletred', lw=4, label='Bidang Singgung'),
         Line2D([0], [0], color='mediumseagreen', lw=4, label='Permukaan Produktivitas')
     ]
     ax.legend(handles=legend_elements, loc='upper right')
