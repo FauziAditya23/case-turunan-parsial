@@ -37,7 +37,7 @@ try:
     st.markdown("### Proses Evaluasi Turunan Parsial ∂f/∂x:")
     st.latex(r"\frac{\partial f}{\partial x} = " + sp.latex(fx))
     st.latex(
-        r"\frac{\partial f}{\partial x}(" + f"{x0:.2f}, {y0:.2f}" + r") = -0.8 \times " + f"{x0:.2f}" + " + 0.5 \times " + f"{y0:.2f}"
+        rf"\frac{{\partial f}}{{\partial x}}({x0:.2f}, {y0:.2f}) = -0.8 \times {x0:.2f} + 0.5 \times {y0:.2f}"
     )
     st.latex(f"= {(-0.8*x0):.2f} + {(0.5*y0):.2f}")
     st.latex(f"= {float(fx_val):.2f}")
@@ -46,7 +46,7 @@ try:
     st.markdown("### Proses Evaluasi Turunan Parsial ∂f/∂y:")
     st.latex(r"\frac{\partial f}{\partial y} = " + sp.latex(fy))
     st.latex(
-        r"\frac{\partial f}{\partial y}(" + f"{x0:.2f}, {y0:.2f}" + r") = 0.5  \times " + f"{x0:.2f}" + " - 0.4 \times " + f"{y0:.2f}"
+        rf"\frac{{\partial f}}{{\partial y}}({x0:.2f}, {y0:.2f}) = 0.5 \times {x0:.2f} - 0.4 \times {y0:.2f}"
     )
     st.latex(f"= {(0.5*x0):.2f} - {(0.4*y0):.2f}")
     st.latex(f"= {float(fy_val):.2f}")
