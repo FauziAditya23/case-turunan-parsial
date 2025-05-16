@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
-st.title("📱 Produktivitas Gen Z vs Penggunaan Media Sosial")
+st.title("Produktivitas Gen Z vs Penggunaan Media Sosial")
 
 x, y = sp.symbols('x y')
 fungsi_str = "-0.4*x**2 - 0.2*y**2 + 0.5*x*y + 5"
@@ -25,11 +25,11 @@ try:
     fx_val = fx.subs({x: x0, y: y0})
     fy_val = fy.subs({x: x0, y: y0})
 
-    st.write("📈 Skor produktivitas (f(x, y)):", float(f_val))
-    st.write("🧮 Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
+    st.write("Skor produktivitas (f(x, y)):", float(f_val))
+    st.write("Gradien (∂f/∂x, ∂f/∂y):", f"({float(fx_val):.2f}, {float(fy_val):.2f})")
 
     # Grafik 3D
-    st.subheader("🌀 Grafik Produktivitas dan Bidang Singgung")
+    st.subheader("Grafik Produktivitas dan Bidang Singgung")
 
     x_vals = np.linspace(x0 - 3, x0 + 3, 60)
     y_vals = np.linspace(y0 - 15, y0 + 15, 60)
