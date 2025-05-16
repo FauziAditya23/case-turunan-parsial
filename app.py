@@ -22,8 +22,8 @@ try:
     st.latex(r"\frac{\partial f}{\partial x} = " + sp.latex(fx))
     st.latex(r"\frac{\partial f}{\partial y} = " + sp.latex(fy))
 
-    x0 = st.slider("Durasi media sosial (jam/hari)", 0.0, 12.0, 4.0)
-    y0 = st.slider("Frekuensi buka aplikasi (/hari)", 0.0, 50.0, 20.0)
+    x0 = st.slider("Durasi media sosial (jam/hari)", 0.0, 24.0, 4.0)
+    y0 = st.slider("Frekuensi buka aplikasi (/hari)", 0, 50, 20)
 
     f_val = f.subs({x: x0, y: y0})
     fx_val = fx.subs({x: x0, y: y0})
