@@ -5,7 +5,10 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 st.set_page_config(layout="centered")
-st.title("Pengaruh Durasi dan Frekuensi Penggunaan Media Sosial terhadap Produktivitas Gen Z")
+st.markdown(
+    "<h1 style='text-align: center;'>Pengaruh Durasi dan Frekuensi Penggunaan Media Sosial terhadap Produktivitas Gen Z</h1>",
+    unsafe_allow_html=True
+)
 
 x, y = sp.symbols('x y')
 fungsi_str = "-0.4*x**2 - 0.2*y**2 + 0.5*x*y + 5"
